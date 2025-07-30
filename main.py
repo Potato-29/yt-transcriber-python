@@ -9,6 +9,9 @@ from pytubefix import YouTube
 from pytubefix.cli import on_progress
 
 
+def token_verifier():
+    return "MnTXtGCSl0LWcteMautQLITISzV_EW70hHDAd-A49BuHTMp1ERUaMlwMT5u6zi0Yjkx2WBrrr9vhbHJBac9eiMSAAX1uWCgA95DiZG-USA41srCp31D0cEKIwH9adoC4Of67MDDGaAa9tNQ1TKe7E69IeFjBQA==", "CgtJUEhfbEJ2cGtLMCjQoqjEBjIKCgJJThIEGgAgDw%3D%3D"
+
 load_dotenv()
 app = FastAPI()
 
@@ -28,7 +31,7 @@ async def get_transcript(request: Request):
     yt_url = "https://youtu.be/" + video_url
   
 
-    yt = YouTube(yt_url, use_po_token=True,token_file="po_token.json")
+    yt = YouTube(yt_url, use_po_token=True, po_token_verifier=token_verifier)
     print(yt.title)
 
     ys = yt.streams.get_audio_only()

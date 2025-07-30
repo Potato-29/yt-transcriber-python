@@ -28,7 +28,7 @@ async def get_transcript(request: Request):
     yt_url = "https://youtu.be/" + video_url
   
 
-    yt = YouTube(yt_url, use_po_token=True)
+    yt = YouTube(yt_url, "WEB")
     print(yt.title)
 
     ys = yt.streams.get_audio_only()
